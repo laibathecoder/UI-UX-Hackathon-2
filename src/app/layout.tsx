@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Bluetop from "./components/bluetop";
 import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 
 
 const geistSans = localFont({
@@ -34,6 +35,7 @@ export default function RootLayout({
         <Bluetop />
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

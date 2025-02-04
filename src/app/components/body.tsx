@@ -23,6 +23,7 @@ export default function Body(){
             alt="chair"
             width={178}
             height={178}
+            sizes="100vw" priority
             className="lg:w-[178px] lg:h-[178px] top-[46px] left-[40px] w-[78px] h-[78px]"/>
           </div>
 
@@ -36,7 +37,7 @@ export default function Body(){
             <Image src="/Group 141.png"
             alt="color div"
             width={52}
-            height={4}/>
+            height={4} sizes="100vw" priority/>
           </div>
 
           <div className="lg:absolute lg:w-[99px] lg:h-[14px] lg:top-[301px] lg:left-[92px] left-[42px] top-[110px]">
@@ -62,6 +63,7 @@ export default function Body(){
             alt="chair"
             width={178}
             height={178}
+            sizes="100vw" priority
             className="lg:w-[178px] lg:h-[178px] lg:top-[46px] lg:left-[40px] top-[46px] w-[78px] h-[78px]"/>
           </div>
 
@@ -75,7 +77,8 @@ export default function Body(){
             <Image src="/Group 141 (1).png"
             alt="color div"
             width={52}
-            height={4}/>
+            height={4}
+            sizes="100vw" priority/>
           </div>
 
           <div className="lg:absolute lg:w-[99px] lg:h-[14px] top-[301px] left-[92px]">
@@ -99,6 +102,7 @@ export default function Body(){
             alt="chair"
             width={178}
             height={178}
+            sizes="100vw" priority
             className="lg:w-[178px] lg:h-[178px] top-[46px] left-[40px]"/>
           </div>
 
@@ -112,7 +116,8 @@ export default function Body(){
             <Image src="/Group 141.png"
             alt="color div"
             width={52}
-            height={4}/>
+            height={4}
+            sizes="100vw" priority/>
           </div>
 
           <div className="lg:absolute lg:w-[99px] lg:h-[14px] top-[301px] left-[92px]">
@@ -136,6 +141,7 @@ export default function Body(){
             alt="chair"
             width={216}
             height={151}
+            sizes="100vw" priority
             className="lg:w-[216px] lg:h-[151px] top-[46px] left-[40px]"/>
           </div>
 
@@ -149,7 +155,8 @@ export default function Body(){
             <Image src="/Group 141.png"
             alt="color div"
             width={52}
-            height={4}/>
+            height={4}
+            sizes="100vw" priority/>
           </div>
 
           <div className="lg:absolute lg:w-[99px] lg:h-[14px] text-[8px] top-[301px] left-[92px]">
@@ -174,7 +181,8 @@ export default function Body(){
           <Image src="/Group 169.png"
           alt=""
           width={91}
-          height={4}/>
+          height={4}
+          sizes="100vw" priority/>
         </div>
 
         {/* 2nd Row */}

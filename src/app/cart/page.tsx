@@ -1,10 +1,47 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import itemType from "../types/typesImport";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CartPage() {
+  const [cartItems, setCartItems] = useState<itemType[]>([]);
+
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("JsonProduct") || "[]");
+    setCartItems(storedCart);
+  }, []);
+
+  const handleQuantityChange = (id: string, newQuantity: number) => {
+    const updatedCart = cartItems.map((item) => {
+      if (item._id === id) {
+        const updatedQuantity = newQuantity < 1 ? 1 : newQuantity; 
+        return { ...item, quantity: updatedQuantity };
+      }
+      return item;
+    });
+
+    setCartItems(updatedCart);
+    localStorage.setItem("JsonProduct", JSON.stringify(updatedCart));
+  };
+
+  const handleRemoveItem = (id: string) => {
+    const updatedCart = cartItems.filter((item) => item._id !== id);
+    setCartItems(updatedCart);
+    localStorage.setItem("JsonProduct", JSON.stringify(updatedCart));
+  };
+
+  const calculateTotal = (item: itemType) => item.price * item.quantity;
+
+  const grandTotal = cartItems.reduce(
+    (total, item) => total + calculateTotal(item),
+    0
+  );
+
   return (
-    <div className="min-h-screen">
-      {/* Header */}
-      <header className="bg-[#F6F5FF] lg:w-[1920px] lg:h-[286px] py-4 text-center w-[320px] h-[120px] sm: px-5">
+    <div className=" w-full h-auto">
+      <header className=" bg-[#F6F5FF] w-full lg:h-[286px] py-4 text-center h-[120px] px-5">
         <div className="absolute lg:w-[265px] lg:h-[64px] lg:top-[221px] lg:left-[373px]">
           <h1 className="lg:text-[36px] font-bold leading-[42.19px] text-[#101750] font-josefin-sans text-center ">
             Shopping Curt
@@ -16,356 +53,98 @@ export default function CartPage() {
         </div>
       </header>
 
-      <div className="grid lg:my-52 lg:mx-80">
-        <div className="grid grid-cols-3">
-          {/* Cart Table */}
-
-          <div className="grid lg:grid-cols-2 lg:gap-[550px] lg:w-[1300px] w-[320px] gap-10">
-            {/* items div */}
-            <div className="lg:w-[830px] w-[320px] bg-white p-6 rounded shadow b">
-              <table className="lg:w-[780px] w-[320px] text-left border-collapse ">
-                <thead>
-                  <tr className=" flex justify-around gap-20 lg:py-0 py-2">
-                    <th className="font-[Josefin Sans] lg:text-[20px] text-[#1D3178] leading-[23.44px] text-left underline-offset-auto decoration-clone py-2 lg:mr-60">
-                      Product
-                    </th>
-                    <th className="hidden lg:block font-[Josefin Sans] lg:text-[20px] text-[#1D3178] leading-[23.44px] text-left underline-offset-auto decoration-clone py-2">
-                      Price
-                    </th>
-                    <th className="hidden lg:block font-[Josefin Sans] lg:text-[20px] text-[#1D3178] leading-[23.44px] text-left underline-offset-auto decoration-clone py-2">
-                      Quantity
-                    </th>
-                    <th className="hidden lg:block font-[Josefin Sans] lg:text-[20px] text-[#1D3178] leading-[23.44px] text-left underline-offset-auto decoration-clone py-2">
-                      Total
-                    </th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {/* 1st row */}
-                  <tr className="hover:bg-gray-100 my-4">
-                    {/* ****** */}
-                    <td className="lg:flex lg:justify-between ">
-                      {/* ----- */}
-                      <div>
-                        <div className="py-2 flex lg:w-[300px]">
-                          <Image
-                            src="/Rectangle 34.png"
-                            alt="Leather Backpack"
-                            width={83}
-                            height={87}
-                            className="w-[83px] h-[87px] object-cover rounded mr-2"
-                          />
-                          <span className="font-[Josefin Sans] text-[14px] leading-[16.41px] text-left underline-offset-auto decoration-clone my-2">
-                            Ut diam consequat
-                            <br />
-                            <div>
-                              <p className="font-[Josefin Sans] text-[14px] text-[#A1A8C1] leading-[16.41px] text-left underline-offset-auto decoration-clone my-1">
-                                Color:Brown
-                              </p>
-                              <p className="font-[Josefin Sans] text-[14px] text-[#A1A8C1] leading-[16.41px] text-left underline-offset-auto decoration-clone my-1">
-                                Size:XL
-                              </p>
-                            </div>
-                          </span>
-                        </div>
-                      </div>
-                      {/* ---- */}
-                      <div className="flex lg:justify-center items-center lg:gap-[95px] gap-10">
-                        <p className="font-josefin text-[14px] text-[#15245E] leading-[16.41px] text-left">
-                          $32.00
-                        </p>
-                        <p className="py-4">
-                          <input
-                            type="number"
-                            defaultValue={1}
-                            className="w-16 p-1 border rounded"
-                          />
-                        </p>
-                        <p className="font-josefin text-[14px] text-[#15245E] leading-[16.41px] text-right">
-                          ‎£219.00
-                        </p>
-                      </div>
-                    </td>
-                  </tr>
-
-                  <tr className="lg:w-[718px] h-0 lg:absolute top-[709px] left-[375px] border border-[#E1E1E4] mt-[90px] my-10"></tr>
-
-                  {/* 2nd row */}
-                  <tr className="hover:bg-gray-100 my-4">
-                    {/* ****** */}
-                    <td className="lg:flex lg:justify-between ">
-                      {/* ----- */}
-                      <div>
-                        <div className="py-2 flex lg:w-[300px]">
-                          <Image
-                            src="/Rectangle 35.png"
-                            alt="Leather Backpack"
-                            width={83}
-                            height={87}
-                            className="w-[83px] h-[87px] object-cover rounded mr-2"
-                          />
-                          <span className="font-[Josefin Sans] text-[14px] leading-[16.41px] text-left underline-offset-auto decoration-clone my-2">
-                            Vel faucibus posuere
-                            <br />
-                            <div>
-                              <p className="font-[Josefin Sans] text-[14px] text-[#A1A8C1] leading-[16.41px] text-left underline-offset-auto decoration-clone my-1">
-                                Color:Brown
-                              </p>
-                              <p className="font-[Josefin Sans] text-[14px] text-[#A1A8C1] leading-[16.41px] text-left underline-offset-auto decoration-clone my-1">
-                                Size:XL
-                              </p>
-                            </div>
-                          </span>
-                        </div>
-                      </div>
-                      {/* ---- */}
-                      <div className="flex justify-center items-center lg:gap-[95px] gap-10">
-                        <p className="font-josefin text-[14px] text-[#15245E] leading-[16.41px] text-left">
-                          $32.00
-                        </p>
-                        <p className="py-4">
-                          <input
-                            type="number"
-                            defaultValue={1}
-                            className="w-16 p-1 border rounded"
-                          />
-                        </p>
-                        <p className="font-josefin text-[14px] text-[#15245E] leading-[16.41px] text-right">
-                          ‎£219.00
-                        </p>
-                      </div>
-                    </td>
-                  </tr>
-
-                  <tr className="lg:w-[718px] h-0 lg:absolute top-[709px] left-[375px] border border-[#E1E1E4] mt-[190px] my-10"></tr>
-
-                  {/* 3rd row */}
-                  <tr className="hover:bg-gray-100 my-4">
-                    {/* ****** */}
-                    <td className="lg:flex lg:justify-between ">
-                      {/* ----- */}
-                      <div>
-                        <div className="py-2 flex lg:w-[300px]">
-                          <Image
-                            src="/Rectangle 36.png"
-                            alt="Leather Backpack"
-                            width={83}
-                            height={87}
-                            className="w-[83px] h-[87px] object-cover rounded mr-2"
-                          />
-                          <span className="font-[Josefin Sans] text-[14px] leading-[16.41px] text-left underline-offset-auto decoration-clone my-2">
-                            Ac vitae vestibulum
-                            <br />
-                            <div>
-                              <p className="font-[Josefin Sans] text-[14px] text-[#A1A8C1] leading-[16.41px] text-left underline-offset-auto decoration-clone my-1">
-                                Color:Brown
-                              </p>
-                              <p className="font-[Josefin Sans] text-[14px] text-[#A1A8C1] leading-[16.41px] text-left underline-offset-auto decoration-clone my-1">
-                                Size:XL
-                              </p>
-                            </div>
-                          </span>
-                        </div>
-                      </div>
-                      {/* ---- */}
-                      <div className="flex justify-center items-center lg:gap-[95px] gap-10">
-                        <p className="font-josefin text-[14px] text-[#15245E] leading-[16.41px] text-left">
-                          $32.00
-                        </p>
-                        <p className="py-4">
-                          <input
-                            type="number"
-                            defaultValue={1}
-                            className="w-16 p-1 border rounded"
-                          />
-                        </p>
-                        <p className="font-josefin text-[14px] text-[#15245E] leading-[16.41px] text-right">
-                          ‎£219.00
-                        </p>
-                      </div>
-                    </td>
-                  </tr>
-
-                  <tr className="lg:w-[718px] h-0 lg:absolute top-[709px] left-[375px] border border-[#E1E1E4] mt-[295px] my-10"></tr>
-
-                  {/* 4th row */}
-                  <tr className="hover:bg-gray-100 my-4">
-                    {/* ****** */}
-                    <td className="lg:flex lg:justify-between ">
-                      {/* ----- */}
-                      <div>
-                        <div className="py-2 flex lg:w-[300px]">
-                          <Image
-                            src="/Rectangle 37.png"
-                            alt="Leather Backpack"
-                            width={83}
-                            height={87}
-                            className="w-[83px] h-[87px] object-cover rounded mr-2"
-                          />
-                          <span className="font-[Josefin Sans] text-[14px] leading-[16.41px] text-left underline-offset-auto decoration-clone my-2">
-                            Elit massa diam
-                            <br />
-                            <div>
-                              <p className="font-[Josefin Sans] text-[14px] text-[#A1A8C1] leading-[16.41px] text-left underline-offset-auto decoration-clone my-1">
-                                Color:Brown
-                              </p>
-                              <p className="font-[Josefin Sans] text-[14px] text-[#A1A8C1] leading-[16.41px] text-left underline-offset-auto decoration-clone my-1">
-                                Size:XL
-                              </p>
-                            </div>
-                          </span>
-                        </div>
-                      </div>
-                      {/* ---- */}
-                      <div className="flex justify-center items-center lg:gap-[95px] gap-10">
-                        <p className="font-josefin text-[14px] text-[#15245E] leading-[16.41px] text-left">
-                          $32.00
-                        </p>
-                        <p className="py-4">
-                          <input
-                            type="number"
-                            defaultValue={1}
-                            className="w-16 p-1 border rounded"
-                          />
-                        </p>
-                        <p className="font-josefin text-[14px] text-[#15245E] leading-[16.41px] text-right">
-                          ‎£219.00
-                        </p>
-                      </div>
-                    </td>
-                  </tr>
-
-                  <tr className="lg:w-[718px] h-0 lg:absolute top-[709px] left-[375px] border border-[#E1E1E4] mt-[398px] my-10"></tr>
-
-                  {/* 5th row */}
-                  <tr className="hover:bg-gray-100 my-4">
-                    {/* ****** */}
-                    <td className="lg:flex lg:justify-between ">
-                      {/* ----- */}
-                      <div>
-                        <div className="py-2 flex lg:w-[300px]">
-                          <Image
-                            src="/Rectangle 38.png"
-                            alt="Leather Backpack"
-                            width={83}
-                            height={87}
-                            className="w-[83px] h-[87px] object-cover rounded mr-2"
-                          />
-                          <span className="font-[Josefin Sans] text-[14px] leading-[16.41px] text-left underline-offset-auto decoration-clone my-2">
-                            Proin pharetra elementum
-                            <br />
-                            <div>
-                              <p className="font-[Josefin Sans] text-[14px] text-[#A1A8C1] leading-[16.41px] text-left underline-offset-auto decoration-clone my-1">
-                                Color:Brown
-                              </p>
-                              <p className="font-[Josefin Sans] text-[14px] text-[#A1A8C1] leading-[16.41px] text-left underline-offset-auto decoration-clone my-1">
-                                Size:XL
-                              </p>
-                            </div>
-                          </span>
-                        </div>
-                      </div>
-                      {/* ---- */}
-                      <div className="flex justify-center items-center lg:gap-[95px] gap-10">
-                        <p className="font-josefin text-[14px] text-[#15245E] leading-[16.41px] text-left">
-                          $32.00
-                        </p>
-                        <p className="py-4">
-                          <input
-                            type="number"
-                            defaultValue={1}
-                            className="w-16 p-1 border rounded"
-                          />
-                        </p>
-                        <p className="font-josefin text-[14px] text-[#15245E] leading-[16.41px] text-right">
-                          ‎£219.00
-                        </p>
-                      </div>
-                    </td>
-                  </tr>
-
-                  <tr className="lg:w-[718px] h-0 lg:absolute top-[709px] left-[375px] border border-[#E1E1E4] mt-[505px] my-10"></tr>
-                </tbody>
-              </table>
-              <div className="flex justify-between mt-4">
-                <button className="bg-[#FB2E86] font-josefin-sans text-white px-6 py-2 rounded hover:bg-pink-700">
-                  Update Curt
-                </button>
-                <button className="bg-[#FB2E86] font-josefin-sans text-white px-6 py-2 rounded hover:bg-pink-700">
-                  Clear Curt
-                </button>
+      {cartItems.length > 0 ? (
+        <div className="lg:py-10 py-5 px-2">
+          {cartItems.map((item, index) => (
+            <div
+              key={item._id || index}
+              className=" shadow-xl lg:w-[75%] rounded-xl p-4 mb-4 mx-auto flex justify-center items-center"
+            >
+              <div className="">
+                <Image
+                  src={item.image || item.image}
+                  alt={item.name || item.name}
+                  width={400}
+                  height={400}
+                  className="lg:w-40 lg:h-40 object-cover mx-auto px-2"
+                />
               </div>
-            </div>
-
-            {/* product calculation */}
-            <div className=" grid mx-auto lg:mx-0 lg:pb-0 pb-20 gap-10">
-              {/* Cart Totals */}
-              <div className=" rounded shadow-sm lg:w-[371px] lg:h-[352px] ">
-                <h2 className="font-josefin-sans font-semibold text-[#1D3178] text-[20px] leading-[23.44px] text-center underline-offset-auto decoration-slice">Cart Totals</h2>
-
-                <div className="lg:w-[371px] lg:h-[284px] lg:absolute top-[601px] left-[1174px] bg-[#F4F4FC] lg:p-10 rounded-[3px] lg:ml-[70px] lg:mt-[87px] p-5">
-
-                  <div className="flex justify-between mb-2">
-                    <span className="font-lato text-[#1D3178] text-[18px] font-normal leading-[21.6px] text-left underline-offset-auto decoration-slice">Subtotals:</span>
-                    <span className="font-lato text-[#1D3178] text-[18px] font-normal leading-[21.6px] text-left underline-offset-auto decoration-slice">‎£219.00</span>
-                  </div>
-                  {/* line */}
-                  <div className="lg:w-[310px] lg:h-0 top-[670px] left-[1200px] border border-[#E8E6F1]"></div>
-                  
-                  <div className="flex justify-between mt-10">
-                    <span className="font-lato text-[#1D3178] lg:text-[18px] text-[12px]  font-normal leading-[21.6px] text-left underline-offset-auto decoration-slice">Total:</span>
-                    <span className="font-lato text-[#1D3178] lg:text-[18px] text-[12px] font-normal leading-[21.6px] text-left underline-offset-auto decoration-slice">‎£325.00</span>
-                  </div>
-                  <div className="lg:w-[310px] lg:h-0 top-[670px] left-[1200px] border border-[#E8E6F1]"></div>
-
-                  <div className="flex gap-1 lg:mt-9 lg:mb-5">
-                    <Image src="/uil_check.png" alt="" width={8} height={8} className="w-[8px] h-[8px] mt-0.5"/>
-                    <p className="font-lato lg:text-[12px] text-[8px] text-[#8A91AB] font-normal leading-[14.4px] text-left">
-                    Shipping & taxes calculated at checkout
-                    </p>
-                  </div>
-
-                  <button className="lg:w-[312px] lg:h-[40px] font-lato text-[14px] text-white font-bold leading-[16.8px] bg-[#19D16F] text-center px-4 py-2 mt-4 rounded hover:bg-green-600">
-                    Proceed to Checkout
-                  </button>
-
-                </div>
-              </div>
-
-              {/* Calculate Shipping */}
-              <div className=" rounded shadow-sm lg:w-[371px] lg:h-[284px] mt-[-22px]">
-                <h2 className="font-josefin-sans font-semibold text-[#1D3178] text-[20px] leading-[23.44px] text-center underline-offset-auto decoration-slice">
-                  Calculate Shipping
-                </h2>
-                
-                <div className="lg:w-[371px] lg:h-[284px] lg:absolute top-[601px] left-[1174px] bg-[#F4F4FC] lg:p-10 rounded-[3px] lg:ml-[70px] lg:mt-[437px] p-5">
-                <div className=" mb-2">
-                    <p className="font-josefin-sans lg:text-[14px] text-[#C5CBE3] leading-[16.41px] text-left ">Bangladesh</p>
-                    {/* line */}
-                    <div className="lg:w-[310px] lg:h-0 top-[670px] left-[1200px] border border-[#E8E6F1] "></div>
-
-                    <p className="font-josefin-sans lg:text-[14px] text-[#C5CBE3] leading-[16.41px] text-left lg:mt-10 mt-5">Mirpur Dhaka - 1200</p>
-                    {/* line */}
-                    <div className="lg:w-[310px] lg:h-0 top-[670px] left-[1200px] border border-[#E8E6F1]"></div>
-
-                    <p className="font-josefin-sans lg:text-[14px] text-[#C5CBE3] leading-[16.41px] text-left lg:mt-10 mt-5">Postal Code</p>
-                    {/* line */}
-                    <div className="lg:w-[310px] lg:h-0 top-[670px] left-[1200px] border border-[#E8E6F1] mb-10"></div>
-
+              <div className="px-2 lg:w-[55%] lg:px-10 lg:py-5">
+                <div className="lg:flex lg:justify-between items-center lg:mb-2 ">
+                  <p className="font-semibold text-[12px] lg:text-2xl text-[#101750] font-josefin-sans">
+                    {item.name}
+                  </p>
+                  <p className="lg:text-[18px] text-[10px] text-gray-600">
+                    ${item.price}
+                  </p>
                 </div>
 
-                  <button className="lg:w-[312px] lg:h-[40px] font-lato text-[14px] font-bold leading-[16.8px] bg-[#FB2E86] text-white px-4 py-2 rounded hover:bg-pink-700">
-                    Calculate Shipping
+                <div className="flex lg:justify-between items-center lg:mb-2">
+                  <span className="lg:text-[18px] text-gray-600 text-[10px]">
+                    Quantity:
+                  </span>
+                  <input
+                    type="number"
+                    value={item.quantity}
+                    onChange={(e) =>
+                      handleQuantityChange(item._id, Number(e.target.value))
+                    }
+                    className="w-12 text-center border border-gray-300"
+                    min="1"
+                  />
+                </div>
+
+                <div className="flex lg:justify-between items-center lg:mb-2">
+                  <span className="font-semibold">Total:</span>
+                  <span className="lg:text-[18px] text-gray-600 text-[10px]">
+                    ${calculateTotal(item).toFixed(2)}
+                  </span>
+                </div>
+
+                <div className="flex justify-between items-center">
+                  <button
+                    onClick={() => handleRemoveItem(item._id)}
+                    className="bg-[#FB2E86] text-white px-5 py-3 font-josefin-sans font-semibold rounded-md hover:bg-red-600"
+                  >
+                    Remove
                   </button>
                 </div>
-
-                  
-                
               </div>
             </div>
-          </div>
+          ))}
         </div>
+      ) : (
+        <p className="text-center my-20 ">
+          <span className="lg:text-4xl lg:py-40 font-josefin-sans font-bold text-[#101750]">
+            Your cart is empty.
+          </span>
+        </p>
+      )}
+
+      <div className=" text-center lg:flex mx-auto justify-around items-center">
+        {/* button to back */}
+        <div className="bg-[#FB2E86] shadow-md rounded-lg m-2 py-4 px-5 hidden lg:block ">
+          <Link href="/shop">
+            <button className="text-lg font-josefin-sans font-bold text-white">
+              Back To Shop
+            </button>
+          </Link>
+        </div>
+
+        <div className="text-center lg:text-right mt-4 ">
+          <h2 className="text-xl font-josefin-sans font-bold text-[#101750]">
+            Grand Total:{" "}
+            <span className="text-[#FB2E86]">${grandTotal.toFixed(2)}</span>
+          </h2>
+        </div>
+      </div>
+      {/* button to back */}
+      <div className="bg-[#FB2E86] rounded-lg m-2 py-4 px-3 text-center lg:hidden">
+        <Link href="/shop">
+          <button className="text-xl font-josefin-sans font-bold text-white">
+            Back To Shop
+          </button>
+        </Link>
       </div>
     </div>
   );

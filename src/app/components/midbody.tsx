@@ -20,6 +20,7 @@ export default function Midbody() {
                 alt=""
                 width={171}
                 height={171}
+                sizes="100vw" priority
                 className="lg:w-[171px] lg:h-[171px] top-[41px] left-[41px] "
               />
             </div>
@@ -47,6 +48,7 @@ export default function Midbody() {
                 alt=""
                 width={171}
                 height={171}
+                sizes="100vw" priority
                 className="lg:w-[171px] lg:h-[171px] top-[41px] left-[41px] "
               />
             </div>
@@ -74,6 +76,7 @@ export default function Midbody() {
                 alt=""
                 width={171}
                 height={171}
+                sizes="100vw" priority
                 className="lg:w-[171px] lg:h-[171px] top-[41px] left-[41px] "
               />
             </div>
@@ -101,6 +104,7 @@ export default function Midbody() {
                 alt=""
                 width={253}
                 height={211}
+                sizes="100vw" priority
                 className="lg:w-[253px] lg:h-[211px] top-[15px] left-[0px] "
               />
             </div>
@@ -146,6 +150,7 @@ export default function Midbody() {
               alt=""
               width={213}
               height={207}
+              sizes="100vw" priority
               className="lg:w-[213px] lg:h-[207px] top-[4323px] left-[576px]"
             />
           </div>
@@ -175,6 +180,7 @@ export default function Midbody() {
               alt=""
               width={213}
               height={207}
+              sizes="100vw" priority
               className="lg:w-[312px] lg:h-[173px] top-[4357px] left-[926px]"
             />
           </div>
@@ -189,6 +195,7 @@ export default function Midbody() {
                 alt=""
                 width={64}
                 height={71}
+                sizes="100vw" priority
                 className="relative lg:w-[64px] lg:h-[71px] top-[2px] left-[21px]"
               />
             </div>
@@ -211,6 +218,7 @@ export default function Midbody() {
                   alt=""
                   width={67}
                   height={67}
+                  sizes="100vw" priority
                   className="relative lg:w-[64px] lg:h-[71px] top-[3px] left-[19px]"
                 />
               </div>
@@ -234,6 +242,7 @@ export default function Midbody() {
                   alt=""
                   width={64}
                   height={71}
+                  sizes="100vw" priority
                   className="relative lg:w-[64px] lg:h-[71px] top-[3px] left-[17px]"
                 />
               </div>
@@ -305,6 +314,7 @@ export default function Midbody() {
                       alt=""
                       width={16}
                       height={11}
+                      sizes="100vw" priority
                       className="lg:w-[16px] lg:h-[11px] top-[6px] left-[1px]"
                     />
                   </div>
@@ -323,6 +333,7 @@ export default function Midbody() {
                       alt=""
                       width={16}
                       height={11}
+                      sizes="100vw" priority
                       className="lg:w-[16px] lg:h-[11px] top-[6px] left-[4px]"
                     />
                   </div>
@@ -343,6 +354,7 @@ export default function Midbody() {
                       alt=""
                       width={16}
                       height={11}
+                      sizes="100vw" priority
                       className="lg:w-[16px] lg:h-[11px] top-[6px] left-[1px]"
                     />
                   </div>
@@ -361,6 +373,7 @@ export default function Midbody() {
                       alt=""
                       width={16}
                       height={11}
+                      sizes="100vw" priority
                       className="lg:w-[16px] lg:h-[11px] top-[6px] left-[4px]"
                     />
                   </div>
@@ -383,7 +396,7 @@ export default function Midbody() {
 
             {/* img-div */}
             <div className="lg:w-[699px] lg:h-[597px] left-[515px]">
-              <Image src="/Group 154.png" alt="" width={699} height={597} />
+              <Image src="/Group 154.png" alt="" width={699} height={597} sizes="100vw" priority/>
             </div>
           </div>
         </div>

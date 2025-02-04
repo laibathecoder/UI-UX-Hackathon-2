@@ -11,7 +11,7 @@ export default function Latestblog() {
 
       <div>
         {/* 1st card */}
-        <div className="lg:absolute lg:w-[370px] lg:h-[493px] top-[6892px] left-[349px]">
+        <div className="px-4 lg:px-0 lg:absolute lg:w-[370px] lg:h-[493px] top-[6892px] left-[349px]">
           {/* img div */}
           <div className="lg:w-[370px] lg:h-[255px] rounded-[8px]">
             <Image src="/Frame 3.png" alt="" width={370} height={255} />
@@ -73,7 +73,7 @@ export default function Latestblog() {
         </div>
 
         {/* 2nd Card */}
-        <div className="lg:absolute lg:w-[370px] lg:h-[493px] top-[6892px] left-[775px]">
+        <div className="px-4 lg:px-0 lg:absolute lg:w-[370px] lg:h-[493px] top-[6892px] left-[775px]">
           {/* img div */}
           <div className="lg:w-[370px] lg:h-[255px] rounded-[8px]">
             <Image src="/Frame 4.png" alt="" width={370} height={255} />
@@ -133,7 +133,7 @@ export default function Latestblog() {
         </div>
 
         {/* 3rd  Card */}
-        <div className="absolute  lg:w-[370px] lg:h-[493px] top-[6892px] left-[1201px]">
+        <div className=" hidden lg:block absolute lg:w-[370px] lg:h-[493px] top-[6892px] left-[1201px]">
           {/* img div */}
           <div className="lg:w-[370px] lg:h-[255px] rounded-[8px]">
             <Image src="/Frame 3 (2).png" alt="" width={370} height={255} />

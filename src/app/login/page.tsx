@@ -5,7 +5,7 @@ const Login = ()=>{
     <>
     <div className="min-h-screen">
       {/* Header */}
-    <header className="bg-[#F6F5FF] lg:w-[1920px] lg:h-[286px] py-4 text-center w-[320px] h-[120px]">
+    <header className="bg-[#F6F5FF] lg:h-[286px] py-4 text-center w-full h-[120px]">
         <div className="absolute lg:w-[265px] lg:h-[64px] lg:top-[221px] lg:left-[373px]">
           <h1 className="lg:text-[36px] font-bold leading-[42.19px] text-[#101750] font-josefin-sans text-center ">
           My Account

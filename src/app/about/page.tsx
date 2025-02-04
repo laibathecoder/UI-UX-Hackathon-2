@@ -4,14 +4,14 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="bg-[#F6F5FF] lg:w-[1920px] lg:h-[286px] py-4 text-center w-[320px] h-[120px]">
+      <header className="bg-[#F6F5FF] lg:h-[286px] py-4 text-center w-full h-[120px]">
         <div className="absolute lg:w-[265px] lg:h-[64px] lg:top-[221px] lg:left-[373px]">
           <h1 className="lg:text-[36px] font-bold leading-[42.19px] text-[#101750] font-josefin-sans text-center ">
-            My Account
+            About Us
           </h1>
           <p className=" flex lg:text-[15px] text-[10px] lg:font-medium leading-[19.2px] text-center text-black font-lato pl-4 lg:pl-9">
             Home. <span>Page.</span>
-            <span className="text-[#FB2E86]">My Account</span>
+            <span className="text-[#FB2E86]">About Us</span>
           </p>
         </div>
       </header>
