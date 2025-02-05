@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Deployment Preparation and Staging Environment Setup
 
-## Getting Started
+Project Overview
 
-First, run the development server:
+This project focuses on deploying a marketplace application to a staging environment, ensuring it is properly configured, tested, and documented for production readiness.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Deployment Steps
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Step 1: Hosting Platform Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Selected Vercel as the hosting platform.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Connected GitHub repository to Vercel.
 
-## Learn More
+Configured build settings for a successful deployment.
 
-To learn more about Next.js, take a look at the following resources:
+Step 2: Configure Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Created a .env file with sensitive credentials.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Uploaded variables securely to the hosting platform.
 
-## Deploy on Vercel
+Step 3: Deploy to Staging
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Successfully deployed the application to a staging environment.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Verified site loading and core functionality.
+
+Step 4: Staging Environment Testing
+
+Functional Testing: Checked product listing, cart operations, and API interactions.
+
+Performance Testing: Used Lighthouse for speed and responsiveness analysis.
+
+Security Testing: Verified HTTPS implementation and secure handling of API keys.
+
+Test Case Reporting: Documented test cases in a CSV file.
+
+Step 5: Documentation Updates
+
+Created this README.md to summarize the deployment process.
+
+Organized all project files in a structured GitHub repository.
+
+Project Structure
+
+ project-repository
+ ├──  src
+ ├──  public
+ ├──  documents
+ │   ├── Deployment_Report.pdf
+ │   ├── Test_Case_Report.csv
+ │   ├── Performance_Report.pdf
+ ├── README.md
+
+Expected Outcome
+
+ Fully deployed and tested staging environment.
+
+ Environment variables securely configured.
+
+ Test cases and performance reports documented.
+
+ Well-structured GitHub repository.
+
+Submission Details
+
+
+Submitted Items:
+
+Staging deployment link https://hackthon-3-market-place-product-hekto-bylaibatheai.vercel.app/
+
+GitHub repository with documentation https://github.com/laibathecoder/UI-UX-Hackathon-2.git
+
+Prepared by: Laiba Naz
+
